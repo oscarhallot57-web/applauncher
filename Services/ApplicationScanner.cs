@@ -75,12 +75,15 @@ namespace AppLauncher.Services
             }
         }
 
-        private ApplicationItem? ResolveLnk(string lnkPath)
-        {
-            if (!ShellLinkResolver.TryResolve(lnkPath, out string target, out string args, out string workDir))
-                return null;
+           private ApplicationItem? ResolveLnk(string lnkPath)
+   {
+       bool resolved = ShellLinkResolver.TryResolve(lnkPath, out string target, out string args, out string workDir);
+       if (!resolved || string.IsNullOrWhiteSpace(target))
+       {
+           resolved = LnkBinaryParser.TryParse(lnkPath, out target, out args, out workDir);
+       }
 
-            if (string.IsNullOrWhiteSpace(target)) return null;
+       if (!resolved || string.IsNullOrWhiteSpace(target)) return null;
 
             var fileInfo = new FileInfo(lnkPath);
 
