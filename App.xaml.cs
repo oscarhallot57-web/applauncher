@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Threading;
 using AppLauncher.Helpers;
 using AppLauncher.Services;
+using Application = System.Windows.Application;
 
 namespace AppLauncher
 {
