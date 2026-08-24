@@ -7,6 +7,7 @@ using AppLauncher.Helpers;
 using AppLauncher.Models;
 using AppLauncher.Services;
 using AppLauncher.ViewModels;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 
 namespace AppLauncher
 {
